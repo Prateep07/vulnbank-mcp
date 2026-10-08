@@ -24,6 +24,3 @@ exclude = [
     "node_modules*",
     "widgets*",
 ]
-
-[tool.uv.sources]
-nitrostack = { path = "vendor/nitrostack" }
