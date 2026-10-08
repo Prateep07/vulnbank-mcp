@@ -1,1 +1,3 @@
 nitrostack
+httpx
+pydantic>=2,<3

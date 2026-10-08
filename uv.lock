@@ -404,7 +404,7 @@ wheels = [
 [[package]]
 name = "nitrostack"
 version = "0.4.0"
-source = { directory = "vendor/nitrostack" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
     { name = "mcp" },
@@ -415,17 +415,9 @@ dependencies = [
     { name = "uvicorn" },
     { name = "watchfiles" },
 ]
-
-[package.metadata]
-requires-dist = [
-    { name = "anyio", specifier = ">=4.0.0" },
-    { name = "mcp", specifier = ">=2,<3" },
-    { name = "packaging", specifier = ">=23.0.0" },
-    { name = "pydantic", specifier = ">=2.0.0" },
-    { name = "starlette", specifier = ">=0.30.0" },
-    { name = "tomli", marker = "python_full_version < '3.11'", specifier = ">=2.0.0" },
-    { name = "uvicorn", specifier = ">=0.20.0" },
-    { name = "watchfiles", specifier = ">=0.18.0" },
+sdist = { url = "https://files.pythonhosted.org/packages/a3/76/12025c24f2c6409bbdb5591e610e19dabc02b94a0b04dcbe518cc8508633/nitrostack-0.4.0.tar.gz", hash = "sha256:01f645489def1bd1f306cd6b0facb0c069d94cbec2998db4478dfc2143bd5470", size = 453744, upload-time = "2026-10-01T21:44:40.028Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/cf/74/dbd0ec4e95a717609b92e47541be627060a7da4e89cd392d8576f3337659/nitrostack-0.4.0-py3-none-any.whl", hash = "sha256:aff3d5688dc34829c8a78fb237e69cc2a4a8b51d60f0b44cad704050ec1fe460", size = 407463, upload-time = "2026-10-01T21:44:38.521Z" },
 ]
 
 [[package]]
@@ -1064,17 +1056,19 @@ wheels = [
 
 [[package]]
 name = "vulnbank-nitrostack"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "." }
 dependencies = [
     { name = "httpx" },
     { name = "nitrostack" },
+    { name = "pydantic" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "httpx" },
-    { name = "nitrostack", directory = "vendor/nitrostack" },
+    { name = "nitrostack" },
+    { name = "pydantic", specifier = ">=2,<3" },
 ]
 
 [[package]]
