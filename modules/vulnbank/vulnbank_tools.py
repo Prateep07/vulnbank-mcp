@@ -5,12 +5,10 @@ from typing import Optional
 import httpx
 from pydantic import BaseModel, Field
 
-from nitrostack import injectable, tool, widget, ExecutionContext
-
+from nitrostack import ExecutionContext, injectable, tool, widget
 
 VULNBANK_BASE_URL = (
-    os.getenv("VULNBANK_BASE_URL")
-    or "http://127.0.0.1:5000"
+    os.getenv("VULNBANK_BASE_URL") or "http://127.0.0.1:5000"
 ).rstrip("/")
 
 
@@ -129,7 +127,6 @@ def response_data(
         )
 
         title = None
-
         if title_match:
             title = " ".join(title_match.group(1).split())
 
@@ -143,7 +140,6 @@ def response_data(
 
         result["title"] = title
         result["text"] = text[:1200]
-
     else:
         result["body"] = response.text[:body_limit]
 
@@ -164,7 +160,6 @@ class VulnBankTools:
         input: EmptyInput,
         context: ExecutionContext,
     ) -> dict:
-
         endpoints = [
             "/login",
             "/logout",
@@ -182,7 +177,6 @@ class VulnBankTools:
                 timeout=10.0,
                 follow_redirects=True,
             ) as client:
-
                 response = await client.get("/login")
 
                 return {
@@ -195,7 +189,6 @@ class VulnBankTools:
                 }
 
         except Exception as error:
-
             return {
                 "name": "VulnBank",
                 "status": "unreachable",
@@ -207,9 +200,9 @@ class VulnBankTools:
             }
 
     @tool(
-    name="list_vulnerabilities",
-    description="List the intentionally vulnerable security labs exposed by VulnBank.",
-    input_schema=EmptyInput,
+        name="list_vulnerabilities",
+        description="List the intentionally vulnerable security labs exposed by VulnBank.",
+        input_schema=EmptyInput,
     )
     @widget("vulnbank")
     async def list_vulnerabilities(
@@ -217,16 +210,12 @@ class VulnBankTools:
         input: EmptyInput,
         context: ExecutionContext,
     ) -> dict:
-    
         severity_counts = {}
-    
+
         for vulnerability in VULNERABILITIES:
             severity = vulnerability["severity"]
-    
-            severity_counts[severity] = (
-                severity_counts.get(severity, 0) + 1
-            )
-    
+            severity_counts[severity] = severity_counts.get(severity, 0) + 1
+
         return {
             "application": "VulnBank",
             "base_url": VULNBANK_BASE_URL,
@@ -245,34 +234,31 @@ class VulnBankTools:
         input: LoginInput,
         context: ExecutionContext,
     ) -> dict:
-
         try:
-            client = httpx.AsyncClient(
+            async with httpx.AsyncClient(
                 base_url=VULNBANK_BASE_URL,
                 timeout=10.0,
                 follow_redirects=True,
-            )
+            ) as client:
+                response = await client.post(
+                    "/login",
+                    data={
+                        "username": input.username,
+                        "password": input.password,
+                    },
+                )
 
-            response = await client.post(
-                "/login",
-                data={
+                logged_in = "login" not in response.url.path.lower()
+
+                return {
+                    "status_code": response.status_code,
+                    "logged_in": logged_in,
                     "username": input.username,
-                    "password": input.password,
-                },
-            )
-
-            logged_in = "login" not in response.url.path.lower()
-
-            return {
-                "status_code": response.status_code,
-                "logged_in": logged_in,
-                "username": input.username,
-                "session_stored": True,
-                "response": response_data(response),
-            }
+                    "session_stored": True,
+                    "response": response_data(response),
+                }
 
         except Exception as error:
-
             return {
                 "status_code": None,
                 "logged_in": False,
@@ -291,14 +277,12 @@ class VulnBankTools:
         input: EmptyInput,
         context: ExecutionContext,
     ) -> dict:
-
         try:
             async with httpx.AsyncClient(
                 base_url=VULNBANK_BASE_URL,
                 timeout=10.0,
                 follow_redirects=True,
             ) as client:
-
                 response = await client.get("/dashboard")
 
                 authenticated = (
@@ -313,7 +297,6 @@ class VulnBankTools:
                 }
 
         except Exception as error:
-
             return {
                 "authenticated": False,
                 "status_code": None,
@@ -330,26 +313,20 @@ class VulnBankTools:
         input: AccountInput,
         context: ExecutionContext,
     ) -> dict:
-
         try:
             async with httpx.AsyncClient(
                 base_url=VULNBANK_BASE_URL,
                 timeout=10.0,
                 follow_redirects=True,
             ) as client:
-
-                response = await client.get(
-                    f"/account/{input.account_id}"
-                )
+                response = await client.get(f"/account/{input.account_id}")
 
                 result = response_data(response)
-
                 result["account_id"] = input.account_id
 
                 return result
 
         except Exception as error:
-
             return {
                 "account_id": input.account_id,
                 "status_code": None,
@@ -367,14 +344,12 @@ class VulnBankTools:
         input: TransferInput,
         context: ExecutionContext,
     ) -> dict:
-
         try:
             async with httpx.AsyncClient(
                 base_url=VULNBANK_BASE_URL,
                 timeout=10.0,
                 follow_redirects=True,
             ) as client:
-
                 response = await client.post(
                     "/transfer",
                     data={
@@ -384,14 +359,12 @@ class VulnBankTools:
                 )
 
                 result = response_data(response)
-
                 result["amount"] = input.amount
                 result["to_account"] = input.to_account
 
                 return result
 
         except Exception as error:
-
             return {
                 "status_code": None,
                 "ok": False,
@@ -410,20 +383,17 @@ class VulnBankTools:
         input: EmptyInput,
         context: ExecutionContext,
     ) -> dict:
-
         try:
             async with httpx.AsyncClient(
                 base_url=VULNBANK_BASE_URL,
                 timeout=10.0,
                 follow_redirects=True,
             ) as client:
-
                 response = await client.get("/admin")
 
                 return response_data(response)
 
         except Exception as error:
-
             return {
                 "status_code": None,
                 "ok": False,
@@ -440,14 +410,12 @@ class VulnBankTools:
         input: RestoreInput,
         context: ExecutionContext,
     ) -> dict:
-
         try:
             async with httpx.AsyncClient(
                 base_url=VULNBANK_BASE_URL,
                 timeout=10.0,
                 follow_redirects=True,
             ) as client:
-
                 response = await client.post(
                     "/restore",
                     data={
@@ -458,7 +426,6 @@ class VulnBankTools:
                 return response_data(response)
 
         except Exception as error:
-
             return {
                 "status_code": None,
                 "ok": False,
@@ -475,14 +442,12 @@ class VulnBankTools:
         input: ImportInput,
         context: ExecutionContext,
     ) -> dict:
-
         try:
             async with httpx.AsyncClient(
                 base_url=VULNBANK_BASE_URL,
                 timeout=10.0,
                 follow_redirects=True,
             ) as client:
-
                 response = await client.post(
                     "/import",
                     data={
@@ -491,13 +456,11 @@ class VulnBankTools:
                 )
 
                 result = response_data(response)
-
                 result["requested_url"] = input.url
 
                 return result
 
         except Exception as error:
-
             return {
                 "status_code": None,
                 "ok": False,
@@ -515,14 +478,12 @@ class VulnBankTools:
         input: EmptyInput,
         context: ExecutionContext,
     ) -> dict:
-
         try:
             async with httpx.AsyncClient(
                 base_url=VULNBANK_BASE_URL,
                 timeout=10.0,
                 follow_redirects=True,
             ) as client:
-
                 response = await client.get("/logout")
 
                 return {
@@ -532,7 +493,6 @@ class VulnBankTools:
                 }
 
         except Exception as error:
-
             return {
                 "status_code": None,
                 "logged_out": False,

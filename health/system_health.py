@@ -1,11 +1,10 @@
-import time
 from nitrostack import health_check
 
-class SystemHealthCheck:
-    def __init__(self):
-        self.start_time = time.time()
 
-    @health_check("system")
-    def check_system(self) -> bool:
-        uptime = time.time() - self.start_time
-        return uptime >= 0
+@health_check(name="system")
+class SystemHealthCheck:
+    async def check(self) -> dict:
+        return {
+            "status": "ok",
+            "service": "vulnbank-nitrostack",
+        }

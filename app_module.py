@@ -1,6 +1,7 @@
-from nitrostack import module, ConfigModule
-from modules.vulnbank.vulnbank_module import VulnBankModule
+from nitrostack import ConfigModule, module
+
 from health.system_health import SystemHealthCheck
+from modules.vulnbank.vulnbank_module import VulnBankModule
 
 
 @module(
@@ -8,13 +9,11 @@ from health.system_health import SystemHealthCheck
     imports=[
         ConfigModule.for_root(
             env_file_path=".env",
-            defaults={
-                "PORT": "3000"
-            }
+            defaults={"PORT": "3000"},
         ),
-        VulnBankModule
+        VulnBankModule,
     ],
-    providers=[SystemHealthCheck]
+    providers=[SystemHealthCheck],
 )
 class AppModule:
     pass
