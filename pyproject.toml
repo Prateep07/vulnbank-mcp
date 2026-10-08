@@ -4,18 +4,23 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vulnbank-nitrostack"
-version = "0.1.0"
-description = "My awesome MCP server"
+version = "0.2.0"
+description = "NitroStack MCP server for the VulnBank security training application"
 requires-python = ">=3.10"
+
 dependencies = [
     "nitrostack",
     "httpx",
+    "pydantic>=2,<3",
 ]
 
 [tool.setuptools.packages.find]
 where = ["."]
 namespaces = true
-exclude = ["tests*", ".venv*", "venv*", "node_modules*", "widgets*"]
-
-[tool.uv.sources]
-nitrostack = { path = "vendor/nitrostack" }
+exclude = [
+    "tests*",
+    ".venv*",
+    "venv*",
+    "node_modules*",
+    "widgets*",
+]

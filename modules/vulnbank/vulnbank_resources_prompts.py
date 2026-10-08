@@ -1,5 +1,12 @@
+import os
+
 from nitrostack import injectable, resource, prompt, ExecutionContext
 
+
+VULNBANK_BASE_URL = (
+    os.getenv("VULNBANK_BASE_URL")
+    or "http://127.0.0.1:5000"
+).rstrip("/")
 
 
 @injectable(deps=[])
@@ -15,10 +22,14 @@ class VulnBankResourcesPrompts:
         self,
         context: ExecutionContext,
     ) -> dict:
+
         return {
             "name": "VulnBank",
-            "description": "Intentionally vulnerable Flask banking application for security training.",
-            "base_url": "http://127.0.0.1:5000",
+            "description": (
+                "Intentionally vulnerable Flask banking "
+                "application for security training."
+            ),
+            "base_url": VULNBANK_BASE_URL,
             "routes": [
                 "/login",
                 "/logout",
@@ -41,6 +52,7 @@ class VulnBankResourcesPrompts:
         self,
         context: ExecutionContext,
     ) -> dict:
+
         return {
             "labs": [
                 {
@@ -82,44 +94,48 @@ class VulnBankResourcesPrompts:
         }
 
     @prompt(
-    name="vulnbank_security_audit",
-    description="Generate a structured security audit workflow for the VulnBank training application.",
-    arguments=[]
+        name="vulnbank_security_audit",
+        description="Generate a structured security audit workflow for VulnBank.",
+        arguments=[],
     )
     async def vulnbank_security_audit(
         self,
         args: dict,
         context: ExecutionContext,
     ):
+
         return {
             "role": "user",
             "content": (
-                "Perform a security assessment of the VulnBank training application. "
-                "Review its authentication, authorization, account access, transfer logic, "
-                "administrative access, deserialization functionality, and URL import functionality. "
-                "For each finding, provide the endpoint, vulnerability category, impact, "
-                "evidence to collect, and a recommended remediation. "
+                "Perform a security assessment of the VulnBank "
+                "training application. Review its authentication, "
+                "authorization, account access, transfer logic, "
+                "administrative access, deserialization functionality, "
+                "and URL import functionality. For each finding, "
+                "provide the endpoint, vulnerability category, impact, "
+                "evidence to collect, and recommended remediation. "
                 "Do not perform destructive actions or modify financial data."
             ),
         }
-    
-    
+
     @prompt(
         name="vulnbank_test_login",
         description="Create a safe workflow for testing VulnBank authentication.",
-        arguments=[]
+        arguments=[],
     )
     async def vulnbank_test_login(
         self,
         args: dict,
         context: ExecutionContext,
     ):
+
         return {
             "role": "user",
             "content": (
-                "Test the VulnBank authentication flow using an authorized test account. "
-                "Verify successful login, unsuccessful login, session creation, "
-                "dashboard access, and logout. "
-                "Do not use credentials belonging to real users."
+                "Test the VulnBank authentication flow using an "
+                "authorized test account. Verify successful login, "
+                "unsuccessful login, session creation, dashboard "
+                "access, and logout. Do not use credentials belonging "
+                "to real users."
             ),
         }
