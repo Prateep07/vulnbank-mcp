@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>VulnBank Status</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .card {
+        border: 1px solid #444;
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      h2 {
+        margin-top: 0;
+      }
+
+      .status {
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+
+      .route {
+        padding: 6px 0;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h2>VulnBank MCP</h2>
+
+      <div class="status">MCP connection active</div>
+
+      <p>
+        Intentionally vulnerable banking application used for security training.
+      </p>
+
+      <h3>Available Endpoints</h3>
+
+      <div class="route">/login</div>
+      <div class="route">/dashboard</div>
+      <div class="route">/account/&lt;account_id&gt;</div>
+      <div class="route">/transfer</div>
+      <div class="route">/admin</div>
+      <div class="route">/restore</div>
+      <div class="route">/import</div>
+    </div>
+  </body>
+</html>
