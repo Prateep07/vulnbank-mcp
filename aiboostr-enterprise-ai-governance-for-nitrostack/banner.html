@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Aiboostr x NitroStack Banner (2400x1260)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@500;600;700&display=swap');
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    width: 2400px;
+    height: 1260px;
+    background-color: #ecf3fb;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Technical Blueprint Grid */
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(195, 212, 235, 0.5) 1.5px, transparent 1.5px),
+      linear-gradient(to bottom, rgba(195, 212, 235, 0.5) 1.5px, transparent 1.5px);
+    background-size: 240px 210px;
+  }
+
+  /* Left Header Container with Safe Margins (y >= 70px, x >= 110px) */
+  .left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1250px;
+    height: 100%;
+    padding: 70px 0 0 110px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+  }
+
+  /* Pill Badge */
+  .badge {
+    align-self: flex-start;
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 20px 48px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  /* Headline */
+  .headline {
+    margin-top: 110px;
+    font-size: 105px;
+    font-weight: 800;
+    line-height: 1.10;
+    letter-spacing: -3.5px;
+    color: #050811;
+    max-width: 1120px;
+  }
+
+  .sub {
+    margin-top: 48px;
+    font-size: 34px;
+    font-weight: 500;
+    color: #3b5275;
+    max-width: 1000px;
+    line-height: 1.45;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Right illustration */
+  .right {
+    position: absolute;
+    right: 0; top: 0;
+    width: 1300px;
+    height: 1260px;
+    z-index: 5;
+  }
+  .right svg { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <div class="left">
+    <div class="badge">ENTERPRISE GOVERNANCE</div>
+    <h1 class="headline">Aiboostr:<br>Enterprise AI<br>Governance &amp;<br>Orchestration</h1>
+    <p class="sub">Centralized gateway, sovereign private LLMs, and EU AI Act compliance meet developer-first MCP tooling.</p>
+  </div>
+
+  <div class="right">
+    <svg viewBox="0 0 1300 1260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Radial background glow -->
+        <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#187CF4" stop-opacity="0.22"/>
+          <stop offset="60%" stop-color="#00f0ff" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#187CF4" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Gradients: Central Governance Gateway Shield / Hub -->
+        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0284c7"/>
+          <stop offset="50%" stop-color="#187CF4"/>
+          <stop offset="100%" stop-color="#4f46e5"/>
+        </linearGradient>
+
+        <linearGradient id="shieldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#38bdf8"/>
+          <stop offset="100%" stop-color="#818cf8"/>
+        </linearGradient>
+
+        <!-- Gradients: Private LLM Node (Purple / Violet) -->
+        <linearGradient id="llmTop" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#c084fc"/>
+          <stop offset="100%" stop-color="#a855f7"/>
+        </linearGradient>
+        <linearGradient id="llmLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#9333ea"/>
+          <stop offset="100%" stop-color="#7e22ce"/>
+        </linearGradient>
+        <linearGradient id="llmRight" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#6b21a8"/>
+          <stop offset="100%" stop-color="#581c87"/>
+        </linearGradient>
+
+        <!-- Gradients: NitroStack MCP Server Cube (Electric Blue / Cyan) -->
+        <linearGradient id="nitroTop" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#38bdf8"/>
+          <stop offset="100%" stop-color="#0284c7"/>
+        </linearGradient>
+        <linearGradient id="nitroLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0369a1"/>
+          <stop offset="100%" stop-color="#075985"/>
+        </linearGradient>
+        <linearGradient id="nitroRight" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0c4a6e"/>
+          <stop offset="100%" stop-color="#082f49"/>
+        </linearGradient>
+
+        <!-- Gradients: Compliance & Audit Node (Emerald / Teal) -->
+        <linearGradient id="auditTop" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#34d399"/>
+          <stop offset="100%" stop-color="#10b981"/>
+        </linearGradient>
+        <linearGradient id="auditLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#059669"/>
+          <stop offset="100%" stop-color="#047857"/>
+        </linearGradient>
+        <linearGradient id="auditRight" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#065f46"/>
+          <stop offset="100%" stop-color="#064e3b"/>
+        </linearGradient>
+
+        <!-- Drop Shadows -->
+        <filter id="shadowLg" x="-30%" y="-30%" width="160%" height="160%">
+          <feDropShadow dx="0" dy="24" stdDeviation="30" flood-color="#0f172a" flood-opacity="0.25"/>
+        </filter>
+        <filter id="glowCyan" x="-40%" y="-40%" width="180%" height="180%">
+          <feDropShadow dx="0" dy="0" stdDeviation="15" flood-color="#00f0ff" flood-opacity="0.6"/>
+        </filter>
+      </defs>
+
+      <!-- Background Ambient Glow -->
+      <circle cx="680" cy="620" r="500" fill="url(#hubGlow)"/>
+
+      <!-- Connecting Circuit / Data Bus Vectors -->
+      <g stroke="#93c5fd" stroke-width="4" stroke-dasharray="10 8" opacity="0.75">
+        <!-- Gateway to Private LLM -->
+        <line x1="680" y1="520" x2="380" y2="340"/>
+        <!-- Gateway to EU AI Act Audit -->
+        <line x1="680" y1="520" x2="1000" y2="340"/>
+        <!-- Gateway to NitroStack MCP Tool 1 -->
+        <line x1="680" y1="680" x2="400" y2="880"/>
+        <!-- Gateway to NitroStack MCP Tool 2 -->
+        <line x1="680" y1="680" x2="980" y2="880"/>
+        <!-- Central Bus Ring -->
+        <circle cx="680" cy="600" r="240" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="8 6" opacity="0.4"/>
+      </g>
+
+      <!-- Pulse Packet Dots along vectors -->
+      <circle cx="530" cy="430" r="8" fill="#c084fc" filter="url(#glowCyan)"/>
+      <circle cx="840" cy="430" r="8" fill="#34d399" filter="url(#glowCyan)"/>
+      <circle cx="540" cy="780" r="8" fill="#00f0ff" filter="url(#glowCyan)"/>
+      <circle cx="830" cy="780" r="8" fill="#00f0ff" filter="url(#glowCyan)"/>
+
+      <!-- NODE 1: TOP LEFT - PRIVATE LLM SERVING (Isometric Cube) -->
+      <g transform="translate(380, 320)" filter="url(#shadowLg)">
+        <!-- Top Face -->
+        <polygon points="0,-70 90,-20 0,30 -90,-20" fill="url(#llmTop)"/>
+        <!-- Left Face -->
+        <polygon points="-90,-20 0,30 0,140 -90,90" fill="url(#llmLeft)"/>
+        <!-- Right Face -->
+        <polygon points="0,30 90,-20 90,90 0,140" fill="url(#llmRight)"/>
+        <!-- Label Badge -->
+        <rect x="-110" y="155" width="220" height="42" rx="8" fill="#1e1b4b" stroke="#a855f7" stroke-width="2"/>
+        <text x="0" y="182" fill="#e9d5ff" font-family="'Inter', sans-serif" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="1">PRIVATE LLM SERVING</text>
+      </g>
+
+      <!-- NODE 2: TOP RIGHT - EU AI ACT AUDIT (Isometric Cube) -->
+      <g transform="translate(1000, 320)" filter="url(#shadowLg)">
+        <!-- Top Face -->
+        <polygon points="0,-70 90,-20 0,30 -90,-20" fill="url(#auditTop)"/>
+        <!-- Left Face -->
+        <polygon points="-90,-20 0,30 0,140 -90,90" fill="url(#auditLeft)"/>
+        <!-- Right Face -->
+        <polygon points="0,30 90,-20 90,90 0,140" fill="url(#auditRight)"/>
+        <!-- Label Badge -->
+        <rect x="-120" y="155" width="240" height="42" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="2"/>
+        <text x="0" y="182" fill="#d1fae5" font-family="'Inter', sans-serif" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="1">EU AI ACT AUDIT STORE</text>
+      </g>
+
+      <!-- CENTRAL HUB: AIBOOSTR AI GATEWAY & GOVERNANCE SHIELD -->
+      <g transform="translate(680, 580)" filter="url(#shadowLg)">
+        <!-- Shield Body -->
+        <path d="M-130,-120 L130,-120 L130,40 Q130,160 0,210 Q-130,160 -130,40 Z" fill="url(#shieldGrad)" stroke="url(#shieldBorder)" stroke-width="6"/>
+        <!-- Internal Shield Details -->
+        <path d="M-100,-95 L100,-95 L100,30 Q100,135 0,175 Q-100,135 -100,30 Z" fill="none" stroke="#bae6fd" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.6"/>
+        
+        <!-- Gateway Lock / Node Icon inside Shield -->
+        <circle cx="0" cy="5" r="38" fill="#0f172a" stroke="#38bdf8" stroke-width="4"/>
+        <rect x="-14" y="-2" width="28" height="24" rx="4" fill="#38bdf8"/>
+        <path d="M-9,-2 L-9,-12 Q-9,-22 0,-22 Q9,-22 9,-12 L9,-2" fill="none" stroke="#38bdf8" stroke-width="4"/>
+        
+        <!-- Shield Headline Label -->
+        <rect x="-145" y="-170" width="290" height="46" rx="8" fill="#050811" stroke="#38bdf8" stroke-width="2.5"/>
+        <text x="0" y="-140" fill="#ffffff" font-family="'Inter', sans-serif" font-size="20" font-weight="800" text-anchor="middle" letter-spacing="2">AIBOOSTR AI GATEWAY</text>
+      </g>
+
+      <!-- NODE 3: BOTTOM LEFT - NITROSTACK CORE MCP (Isometric Cube) -->
+      <g transform="translate(400, 870)" filter="url(#shadowLg)">
+        <!-- Top Face -->
+        <polygon points="0,-75 95,-22 0,32 -95,-22" fill="url(#nitroTop)"/>
+        <!-- Left Face -->
+        <polygon points="-95,-22 0,32 0,145 -95,92" fill="url(#nitroLeft)"/>
+        <!-- Right Face -->
+        <polygon points="0,32 95,-22 95,92 0,145" fill="url(#nitroRight)"/>
+        <!-- Label Badge -->
+        <rect x="-125" y="160" width="250" height="42" rx="8" fill="#082f49" stroke="#38bdf8" stroke-width="2"/>
+        <text x="0" y="187" fill="#e0f2fe" font-family="'Inter', sans-serif" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="1">NITROSTACK @TOOL MCP</text>
+      </g>
+
+      <!-- NODE 4: BOTTOM RIGHT - STATLESS ENTERPRISE SERVICES (Isometric Cube) -->
+      <g transform="translate(980, 870)" filter="url(#shadowLg)">
+        <!-- Top Face -->
+        <polygon points="0,-75 95,-22 0,32 -95,-22" fill="url(#nitroTop)"/>
+        <!-- Left Face -->
+        <polygon points="-95,-22 0,32 0,145 -95,92" fill="url(#nitroLeft)"/>
+        <!-- Right Face -->
+        <polygon points="0,32 95,-22 95,92 0,145" fill="url(#nitroRight)"/>
+        <!-- Label Badge -->
+        <rect x="-135" y="160" width="270" height="42" rx="8" fill="#082f49" stroke="#38bdf8" stroke-width="2"/>
+        <text x="0" y="187" fill="#e0f2fe" font-family="'Inter', sans-serif" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="1">SOVEREIGN CORE BACKEND</text>
+      </g>
+
+      <!-- Accent Orbiting Ring -->
+      <ellipse cx="680" cy="580" rx="460" ry="240" fill="none" stroke="#187CF4" stroke-width="3" opacity="0.3" transform="rotate(-15, 680, 580)"/>
+    </svg>
+  </div>
+</body>
+</html>
